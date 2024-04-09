@@ -31,4 +31,7 @@ steps:
       - '--allow-unauthenticated'
       - '--image=gcr.io/${PROJECT_ID}/your-image-name:$SHORT_SHA'
       - '--port=8080'
-      - '--logging=CLOUD_LOGGING_ONLY'
+      - '--logs-bucket=gs://your-logs-bucket'
+
+images:
+  - 'gcr.io/$PROJECT_ID/your-image-name:$SHORT_SHA'
