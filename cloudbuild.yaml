@@ -1,4 +1,9 @@
 steps:
+  # Activate the service account
+  - name: 'gcr.io/cloud-builders/gcloud'
+    entrypoint: 'gcloud'
+    args: ['auth', 'activate-service-account', '--key-file=service-account.json']
+
   # Build the Docker image
   - name: 'gcr.io/cloud-builders/docker'
     args:
@@ -26,5 +31,4 @@ steps:
       - '--allow-unauthenticated'
       - '--image=gcr.io/${PROJECT_ID}/your-image-name:$SHORT_SHA'
       - '--port=8080'
-    options:
-      logging: CLOUD_LOGGING_ONLY
+      - '--logging=CLOUD_LOGGING_ONLY'
