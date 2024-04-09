@@ -56,7 +56,7 @@ const LoginPage = () => {
           />
           <button
             onClick={handleEmailPasswordSignIn}
-            className="w-full px-4 py-2 mt-3 font-bold text-white bg-blue-500 rounded-md hover:bg-blue-600"
+            className="w-full px-4 py-2 mt-4 font-bold text-white bg-blue-500 rounded-md hover:bg-blue-600"
           >
             Sign In with Email
           </button>
