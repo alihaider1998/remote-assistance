@@ -86,6 +86,7 @@ import { useAuth } from "./firebase";
 
 const App = () => {
   const currentUser = useAuth();
+  console.log(currentUser)
   return (
     <Router>
       <div className="flex min-h-screen bg-gray-700">
