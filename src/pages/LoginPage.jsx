@@ -35,15 +35,6 @@ const LoginPage = () => {
     }
   };
 
-//   const handleSignOut = async () => {
-//     try {
-//       await signOut(auth);
-//       navigate('/login');
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   };
-
   return (
     <div className="flex items-center justify-center h-screen">
       <div className="w-full max-w-md p-8 bg-gray-800 rounded-lg shadow-lg">
@@ -65,7 +56,7 @@ const LoginPage = () => {
           />
           <button
             onClick={handleEmailPasswordSignIn}
-            className="w-full px-4 py-2 font-bold text-white bg-blue-500 rounded-md hover:bg-blue-600"
+            className="w-full px-4 py-2 mt-3 font-bold text-white bg-blue-500 rounded-md hover:bg-blue-600"
           >
             Sign In with Email
           </button>
