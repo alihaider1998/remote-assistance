@@ -1,0 +1,31 @@
+steps:
+  # Specify the service account for the build
+  - name: 'gcr.io/cloud-builders/gcloud'
+    entrypoint: 'gcloud'
+    args: ['auth', 'activate-service-account', '--key-file=service-account.json']
+
+  # Build the React Vite app
+  - name: 'node:18'
+    entrypoint: npm
+    args: ['ci']
+  - name: 'node:18'
+    entrypoint: npm
+    args: ['run', 'build']
+
+  # Deploy the app to Google Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      - 'beta'
+      - 'run'
+      - 'deploy'
+      - 'your-service-name'
+      - '--image=gcr.io/$PROJECT_ID/your-image-name:$COMMIT_SHA'
+      - '--region=your-region'
+      - '--platform=managed'
+      - '--allow-unauthenticated'
+      - '--set-env-vars=VITE_API_URL=https://your-api.example.com'
+      - '--logs-bucket=gs://your-logs-bucket'
+
+images:
+  - 'gcr.io/$PROJECT_ID/your-image-name:$COMMIT_SHA'
