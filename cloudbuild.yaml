@@ -6,7 +6,7 @@ steps:
         'build',
         '.',
         '-t',
-        'gcr.io/$PROJECT_ID/react-project:$SHORT_SHA', # Change "react-project" to your project name
+        'gcr.io/$PROJECT_ID/remote-assistance:$SHORT_SHA', # Change "react-project" to your project name
         '-f',
         'Dockerfile',
         '--build-arg',
