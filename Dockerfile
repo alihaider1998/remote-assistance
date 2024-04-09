@@ -1,18 +1,18 @@
-# Stage 0 - Build Frontend Assets
-FROM node:14-alpine as build
-
+FROM node:16 AS builder
 WORKDIR /app
-COPY package*.json ./
+COPY package.json package-lock.json ./
 RUN npm install
+
 COPY . .
+# Customize the environment variables as needed for your project
+ARG GENERIC_ENV_VARIABLE
+ENV GENERIC_ENV_VARIABLE $GENERIC_ENV_VARIABLE
 RUN npm run build
 
-# Stage 1 - Serve Frontend Assets
-FROM fholzer/nginx-brotli:v1.12.2
+# Step 2: Set up the production environment
+FROM nginx:stable-alpine
+COPY --from=builder /app/dist /usr/share/nginx/html
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-WORKDIR /etc/nginx
-ADD nginx.conf /etc/nginx/nginx.conf
-
-COPY --from=build /app/build /usr/share/nginx/html
 EXPOSE 8080
 CMD ["nginx", "-g", "daemon off;"]
