@@ -86,7 +86,7 @@ import { useAuth } from "./firebase";
 
 const App = () => {
   const currentUser = useAuth();
-  console.log(currentUser)
+
   return (
     <Router>
       <div className="flex min-h-screen bg-gray-700">
@@ -95,10 +95,10 @@ const App = () => {
           <Navbar />
           <div className="flex-1 text-white bg-gray-700">
             <Routes>
-              <Route path="/" element={<HomePage />} />
+              <Route path="/" element={<LoginPage />} />
+              <Route path="/home" element={<HomePage />} />
               <Route path="/alerts" element={<AlertsPage />} />
               <Route path="/vehicles" element={<VehiclesPage />} />
-              <Route path="/login" element={<LoginPage />} />
             </Routes>
           </div>
         </div>

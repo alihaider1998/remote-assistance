@@ -104,7 +104,7 @@ const EmailPasswordAuth = () => {
   const handleSignOut = async () => {
     try {
       signOut(auth);
-      navigate('/login');
+      navigate('/');
     } catch (error) {
       console.log(error);
     }
