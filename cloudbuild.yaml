@@ -23,7 +23,7 @@ steps:
       - 'run'
       - 'deploy'
       - 'react-project' # Change "react-project" to your project name
-      - '--region=${_REGION}' # Customize the region as needed
+      - '--region=europe-west1' # Customize the region as needed
       - '--platform=managed'
       - '--allow-unauthenticated'
       - '--image=gcr.io/${PROJECT_ID}/react-project:$SHORT_SHA' # Change "react-project" to your project name
