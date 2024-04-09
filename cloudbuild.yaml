@@ -1,5 +1,5 @@
 steps:
-  # Specify the service account for the build
+  # Activate the service account
   - name: 'gcr.io/cloud-builders/gcloud'
     entrypoint: 'gcloud'
     args: ['auth', 'activate-service-account', '--key-file=service-account.json']
@@ -25,7 +25,7 @@ steps:
       - '--platform=managed'
       - '--allow-unauthenticated'
       - '--set-env-vars=VITE_API_URL=https://your-api.example.com'
-      - '--logs-bucket=gs://your-logs-bucket'
+      - '--logging=CLOUD_LOGGING_ONLY'
 
 images:
   - 'gcr.io/$PROJECT_ID/your-image-name:$COMMIT_SHA'
