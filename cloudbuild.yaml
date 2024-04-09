@@ -3,6 +3,8 @@ steps:
   - name: 'gcr.io/cloud-builders/gcloud'
     entrypoint: 'gcloud'
     args: ['auth', 'activate-service-account', '--key-file=service-account.json']
+    options:
+      logging: CLOUD_LOGGING_ONLY
 
   # Build the React Vite app
   - name: 'node:18'
@@ -26,8 +28,6 @@ steps:
       - '--allow-unauthenticated'
       - '--set-env-vars=VITE_API_URL=https://your-api.example.com'
       - '--logging=CLOUD_LOGGING_ONLY'
-    options:
-      logging: GCS_ONLY
 
 images:
   - 'gcr.io/$PROJECT_ID/your-image-name:$COMMIT_SHA'
