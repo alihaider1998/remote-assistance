@@ -24,3 +24,8 @@ steps:
 
 images:
 - 'gcr.io/$PROJECT_ID/my-react-app:$COMMIT_SHA'
+
+# Set the logs bucket
+options:
+  logging: GCS_ONLY
+  log_bucket: gs://$PROJECT_ID-cloudbuild-logs
