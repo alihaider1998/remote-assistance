@@ -26,6 +26,8 @@ steps:
       - '--allow-unauthenticated'
       - '--set-env-vars=VITE_API_URL=https://your-api.example.com'
       - '--logging=CLOUD_LOGGING_ONLY'
+    options:
+      logging: GCS_ONLY
 
 images:
   - 'gcr.io/$PROJECT_ID/your-image-name:$COMMIT_SHA'
