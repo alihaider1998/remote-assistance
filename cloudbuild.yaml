@@ -15,18 +15,18 @@ steps:
 
   # Push the Docker image to Container Registry
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'gcr.io/$PROJECT_ID/react-project:$SHORT_SHA'] # Change "react-project" to your project name
+    args: ['push', 'gcr.io/$PROJECT_ID/remote-assistance:$SHORT_SHA'] # Change "react-project" to your project name
 
   # Deploy the Docker image to Cloud Run
   - name: 'gcr.io/cloud-builders/gcloud'
     args:
       - 'run'
       - 'deploy'
-      - 'react-project' # Change "react-project" to your project name
+      - 'remote-assistance' # Change "react-project" to your project name
       - '--region=europe-west1' # Customize the region as needed
       - '--platform=managed'
       - '--allow-unauthenticated'
-      - '--image=gcr.io/${PROJECT_ID}/react-project:$SHORT_SHA' # Change "react-project" to your project name
+      - '--image=gcr.io/${PROJECT_ID}/remote-assistance:$SHORT_SHA' # Change "react-project" to your project name
       - '--port=8080'
 
 options:
